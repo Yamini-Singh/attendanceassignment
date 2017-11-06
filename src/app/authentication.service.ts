@@ -7,13 +7,6 @@ export class AuthenticationService {
   role:number;
   constructor(private http: Http) { }
 
-  isLoggedIn() {
-    return this.email === '' ? false : true ;
-  }
-
-  isAdmin() {
-    return this.role === 0 ? true: false;
-  }
 
   login(email: string) {
      return this.http.get('http://localhost:8888/api/v1/getUser/' + email);

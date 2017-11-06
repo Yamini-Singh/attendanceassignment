@@ -33,15 +33,16 @@ exports.createUser = (req, res) => {
 
 exports.getAttendance=(req,res)=>{
     var email=req.params.email;
-    Attendance.find({email:email},function(err,response){
-        if(err)
-        res.json("Error in getting attendance", err);
-        else
+    Attendance.find({email:email}).sort({date: 1}).exec()
+    .then(dates=>{
         res.json({
-            success:true,
-            body: response
-        });
+            success: true,
+            body: dates
+        })
     })
+    .catch(error=> {
+        console.log("Error message "+error);
+    });
 }
 
 exports.setAttendance = (req, res) => {
@@ -55,21 +56,15 @@ exports.setAttendance = (req, res) => {
         email: email,
         date: date  
     });
-    attendance.save((error, response) => {
-        if (error) {
-             res.json(error);
-        }
-        else {
-            res.json({
-                success: true,
-                body: response
-            });
-        }
+    attendance.save(response => {
+           res.json("Attendance Marked");
     });
-}
-else {
-    res.json("Already exists");
-}
-}
-)
+    }
+    else {
+        res.json("Already exists");
+    }
+    }
+        ).catch(error=> {
+            console.log("Error Message" + error);
+        })
 } 

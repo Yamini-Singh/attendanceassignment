@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 
 var loginInfoSchema = new Schema ({
     email: { type : String, required: true , unique: true},
+    name: { type : String},
     password: { type: String, required: true },
     role: {type: Number }
 });

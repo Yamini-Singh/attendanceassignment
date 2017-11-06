@@ -3,12 +3,12 @@
   <br>
 <button class="btn btn-primary" (click)="show()" >Mark Attendance</button>
 <ng-template [ngIf]="!service.role">
-<button class="btn btn-warning"(click)="showReturns()">Register User</button>
+<button class="btn btn-warning"(click)="show1()">Register User</button>
 </ng-template>
 </div>
 <br><br><br>
 <div align="center"> <input  type="button" (click)="logout()" value="Logout"></div>
-<ng-template [ngIf]="dikhao">
+<ng-template [ngIf]="showtoall">
 <div id="body">
     <form id="myform" autocomplete>
         <label for="date">Date</label>
@@ -25,7 +25,7 @@
     </ng-template>
     
 <br><br>
-<ng-template [ngIf]="!service.role && dikhaoReturns">
+<ng-template [ngIf]="!service.role && showtoadmin">
 <div id="body">
 <form id="myform" autocomplete>
     <label for="name">Name</label>
@@ -33,7 +33,7 @@
     <label for="email">E-mail</label>
     <input type="text" required #email><br>
     <label for="password">Password</label>
-    <input type="password"  id="password"  maxlength="14" placeholder="Enter Password" required #password><br>
+    <input type="password"  id="password"  maxlength="15" placeholder="Enter Password" required #password><br>
     <br>
     <br>
     <div align="center"><input type="button" value="Submit" (click)="onSignup(email.value, name.value, password.value)" > 

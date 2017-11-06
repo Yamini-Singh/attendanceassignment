@@ -9,25 +9,24 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
 
   constructor(private service: AuthenticationService, private router : Router) { }
-  dikhao = false;
-  dikhaoReturns = false;
+  showtoall = false;
+  showtoadmin = false;
   ngOnInit() {
-    console.log(this.service.role);
   }
   onSignup(email: string, name: string, password: string) {
     this.service.onSignup(email, name, password).subscribe(res => console.log(res));
   }
 
   setAttendance(date: string) {
-    this.service.setAttendance(date).subscribe(res => console.log(res));
+    this.service.setAttendance(date).subscribe(res => {alert(JSON.parse(res.text()));})
   }
 
   show() {
-    this.dikhao = true;
+    this.showtoall = true;
   }
 
-  showReturns() {
-    this.dikhaoReturns = true;
+  show1() {
+    this.showtoadmin = true;
   }
 
   logout() {
