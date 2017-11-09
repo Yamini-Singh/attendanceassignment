@@ -10,7 +10,7 @@ var loginInfoSchema = new Schema ({
 
 var attendanceSchema = new Schema ({
     email: { type : String  },
-    date: { type: String }
+    date: { type: String , required: true }
    
 });
 var Login =mongoose.model('logininfo',loginInfoSchema);

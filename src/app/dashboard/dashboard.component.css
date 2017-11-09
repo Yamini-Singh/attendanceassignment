@@ -34,7 +34,7 @@ h1{ color: white;
         padding: 0 ;
         }
         
-    input[type=button],input[type=reset] {
+    input[type=button],input[type=submit],input[type=reset] {
         width: 150px;
         background-color: #ff8000;
         color: white;
